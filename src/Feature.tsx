@@ -1,5 +1,6 @@
 import {
   Leaderboard,
+  MeshNameInput,
   MeshToasts,
   useEventLog,
   useFairRng,
@@ -124,14 +125,13 @@ function Body({ room, config }: { room: YRoom; config: MeshConfig }) {
           round {roundN + 1} · {list.length} quotes · {room.peerCount + 1} peers
         </p>
       </header>
-      <div className="meme-name">
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="your name"
-          maxLength={48}
-        />
-      </div>
+      <MeshNameInput
+        className="meme-name"
+        value={name}
+        onChange={setName}
+        placeholder="your name"
+        maxLength={48}
+      />
       <div className="meme-submitbar">
         <input
           value={draft}
