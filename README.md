@@ -1,7 +1,7 @@
 # mesh-meme-quote
 
 [![pages](https://img.shields.io/badge/live-baditaflorin.github.io%2Fmesh-meme-quote-ff7575)](https://baditaflorin.github.io/mesh-meme-quote/)
-[![version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/baditaflorin/mesh-meme-quote/blob/main/package.json)
+[![version](https://img.shields.io/badge/version-0.1.1-blue)](https://github.com/baditaflorin/mesh-meme-quote/blob/main/package.json)
 [![license](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 > Peers submit one-liners. Head-to-head pairs, vote, reveal, repeat.
