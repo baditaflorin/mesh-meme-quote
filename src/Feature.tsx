@@ -6,6 +6,7 @@ import {
   useFairRng,
   useNamedPeer,
   usePhase,
+  useRoster,
   useVotes,
   type MeshConfig,
   type YRoom,
@@ -30,7 +31,11 @@ export function Feature({ room, config }: Props) {
 function Body({ room, config }: { room: YRoom; config: MeshConfig }) {
   const { name, setName, nameOf } = useNamedPeer(config, room);
   const quotes = useEventLog<Quote>(room, "quotes");
-  const rng = useFairRng(room, "meme-salts");
+  const roster = useRoster(room);
+  const rng = useFairRng(room, "meme-salts", {
+    peerIds: roster.present,
+    minContributors: 1,
+  });
   const roundMap = room.doc.getMap<number>("meme-round");
   const winsMap = room.doc.getMap<number>("meme-wins");
   const roundN = roundMap.get("n") ?? 0;
@@ -74,7 +79,7 @@ function Body({ room, config }: { room: YRoom; config: MeshConfig }) {
 
   const next = () => {
     roundMap.set("n", roundN + 1);
-    rng.rerollMine();
+    rng.rerollRound();
     phase.transition("voting", { from: "reveal" });
   };
 
